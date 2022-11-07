@@ -1,5 +1,8 @@
-import 'package:coffee_app/offerspage.dart';
 import 'package:flutter/material.dart';
+
+import 'pages/menupage.dart';
+import 'pages/orderpage.dart';
+import 'pages/offerspage.dart';
 
 void main() {
   runApp(const MyApp());
@@ -101,6 +104,23 @@ class _MyHomePageState extends State<MyHomePage> {
   var selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
+    Widget currentWidgetPage = const Text("!!!");
+
+    switch (selectedIndex) {
+      case 0:
+        currentWidgetPage = const MenuPage();
+
+        break;
+
+      case 1:
+        currentWidgetPage = const OffersPage();
+        break;
+
+      case 2:
+        currentWidgetPage = const OrderPage();
+        break;
+    }
+
     return Scaffold(
       appBar: AppBar(
         title: Center(child: Image.asset("images/logo.png")),
@@ -139,7 +159,7 @@ class _MyHomePageState extends State<MyHomePage> {
               label: "Order",
             )
           ]),
-      body: const OffersPage(),
+      body: currentWidgetPage,
       // body: Greet(),
     );
   }

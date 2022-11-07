@@ -98,6 +98,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  var selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -105,20 +106,39 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Center(child: Image.asset("images/logo.png")),
       ),
 
-      bottomNavigationBar: BottomNavigationBar(items: const [
-        BottomNavigationBarItem(
-          icon: Icon(Icons.coffee),
-          label: "Menu",
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.local_offer),
-          label: "Offers",
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.shopping_cart_checkout_outlined),
-          label: "Order",
-        )
-      ]),
+      bottomNavigationBar: BottomNavigationBar(
+
+          //Bottom Nav Selection
+          currentIndex: selectedIndex,
+          onTap: (newIndex) {
+            // selectedIndex = newIndex; //changing the state here won't work
+            //stateful widget require the setState function to effect the state change
+
+            setState(() {
+              selectedIndex = newIndex;
+            });
+          },
+
+          //Bottom Nav Stying
+          backgroundColor: Theme.of(context).primaryColor,
+          selectedItemColor: Colors.yellow.shade400,
+          unselectedItemColor: Colors.brown.shade50,
+
+          //Bottom Nav Items
+          items: const [
+            BottomNavigationBarItem(
+              icon: Icon(Icons.coffee),
+              label: "Menu",
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.local_offer),
+              label: "Offers",
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.shopping_cart_checkout_outlined),
+              label: "Order",
+            )
+          ]),
       body: const OffersPage(),
       // body: Greet(),
     );

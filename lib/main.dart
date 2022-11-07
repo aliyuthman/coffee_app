@@ -1,3 +1,4 @@
+import 'package:coffee_app/offerspage.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -80,19 +81,17 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Coffee Masters',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.brown,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
-
-  final String title;
+  const MyHomePage({Key? key}) : super(key: key);
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -103,11 +102,25 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
+        title: Center(child: Image.asset("images/logo.png")),
       ),
-      body: Greet(),
+
+      bottomNavigationBar: BottomNavigationBar(items: const [
+        BottomNavigationBarItem(
+          icon: Icon(Icons.coffee),
+          label: "Menu",
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.local_offer),
+          label: "Offers",
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.shopping_cart_checkout_outlined),
+          label: "Order",
+        )
+      ]),
+      body: const OffersPage(),
+      // body: Greet(),
     );
   }
 }

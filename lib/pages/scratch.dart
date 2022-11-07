@@ -25,16 +25,10 @@ class MenuPage extends StatelessWidget {
       image: "",
     );
 
-    return ListView(
+    return Column(
       children: [
-        ProductItem(
-          product: dummy_product,
-          onAdd: () {},
-        ),
-        ProductItem(
-          product: dummy_product,
-          onAdd: () {},
-        ),
+        ProductItem(product: dummy_product),
+        ProductItem(product: dummy_product),
       ],
     );
   }
@@ -42,12 +36,10 @@ class MenuPage extends StatelessWidget {
 
 class ProductItem extends StatelessWidget {
   final Product product;
-  final Function onAdd;
 
   const ProductItem({
     Key? key,
     required this.product,
-    required this.onAdd,
   }) : super(key: key);
 
   @override
@@ -61,7 +53,6 @@ class ProductItem extends StatelessWidget {
           children: [
             Image.asset(("images/black_coffee.png")),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -79,14 +70,9 @@ class ProductItem extends StatelessWidget {
                     ),
                   ],
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(right: 24.0),
-                  child: ElevatedButton(
-                    onPressed: () {
-                      onAdd(product);
-                    },
-                    child: const Text("Add"),
-                  ),
+                ElevatedButton(
+                  onPressed: () {},
+                  child: const Text("Add"),
                 )
               ],
             )

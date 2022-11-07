@@ -1,11 +1,14 @@
+import 'package:coffee_app/datamanager.dart';
 import 'package:coffee_app/datamodel.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import '../datamanager.dart';
 
 class MenuPage extends StatelessWidget {
-  const MenuPage({Key? key}) : super(key: key);
+  final DataManger dataManager;
+  const MenuPage({Key? key, required this.dataManager}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

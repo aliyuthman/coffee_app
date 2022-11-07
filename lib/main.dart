@@ -13,15 +13,54 @@ Widget Tree
         Text
 */
 
-class Greet extends StatelessWidget {
+class Greet extends StatefulWidget {
   const Greet({Key? key}) : super(key: key);
 
   @override
+  State<Greet> createState() => _GreetState();
+}
+
+class _GreetState extends State<Greet> {
+  var name = "";
+  @override
   Widget build(BuildContext context) {
     // var name = "Aliyu Usman";
+    // var name = "";
     // return Text("Hello $name");
 
-    // We can ony 
+    // We can only return one widget
+
+    var greetStyle = TextStyle(fontSize: 24);
+
+    return Column(
+      children: [
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Row(
+            children: [
+              Text(
+                "Hello $name",
+                style: greetStyle,
+              ),
+            ],
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(left: 24, right: 24),
+          child: TextField(
+              onChanged: (value) => setState(() {
+                    name = value;
+                  })),
+        ),
+      ],
+    );
+
+    //**
+    //StateLess vs Stateful
+    //
+    //
+    //
+    // */
   }
 }
 
